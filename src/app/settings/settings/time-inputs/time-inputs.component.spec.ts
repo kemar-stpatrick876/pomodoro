@@ -18,9 +18,9 @@ describe('TimeInputsComponent', () => {
     };
 
     spectator.detectChanges();
-    expect(spectator.query('.pomodoro-time-input--pomodoro')).toHaveValue('35');
-    expect(spectator.query('.pomodoro-time-input--short-break')).toHaveValue('10');
-    expect(spectator.query('.pomodoro-time-input--long-break')).toHaveValue('25');
+    expect(spectator.query('.pomodoro-time-input__field--pomodoro')).toHaveValue('35');
+    expect(spectator.query('.pomodoro-time-input__field--short-break')).toHaveValue('10');
+    expect(spectator.query('.pomodoro-time-input__field--long-break')).toHaveValue('25');
 
   });
 });

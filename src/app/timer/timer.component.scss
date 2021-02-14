@@ -1,22 +1,25 @@
-:host {
-  height: 400px;
-  width: 400px;
-}
+@import "../../style/respond-to.scss";
 .pomodoro-timer {
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   background-color: #aa1155;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 50%;
   background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
   box-shadow: -50px -50px 100px #272c5a, 50px 50px 100px #121530;
+  @include respond-tablet($at-minimum: true) {
+    width: 400px;
+    height: 400px;
+  }
   .progress-ring {
+    width: 100%;
+    height: 100%;
     &__circle {
       transition: 0.35s stroke-dashoffset;
       transform: rotate(-90deg);
       transform-origin: 50% 50%;
+    }
+    &__time-text {
+      font-size: 80px;
     }
 
     #toggleButton {

@@ -3,7 +3,7 @@
   height: 100%;
 }
 .pomodoro-settings {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 100%;
   width: 100%;
   border-radius: 10px;
@@ -12,14 +12,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #E3E1E1;
+    border-bottom: 1px solid #e3e1e1;
     padding: 24px 12px;
 
     .title {
       color: #161932;
       font-weight: bold;
       font-size: 24px;
-      font-family: 'Kumbh Sans', sans-serif;
+      font-family: "Kumbh Sans", sans-serif;
     }
     .close-btn {
       background-color: transparent;
@@ -40,19 +40,19 @@
     &__control {
       display: flex;
       align-items: center;
+      flex-direction: column;
       justify-content: space-between;
-      padding: 12px;
+      padding: 24px 0;
       &:first-of-type {
-        flex-direction: column;
-        align-items: stretch;
-
+        // flex-direction: column;
+        // align-items: stretch;
       }
       &:not(:last-of-type) {
-        border-bottom: 1px solid #E3E1E1;
+        border-bottom: 1px solid #e3e1e1;
       }
 
       &__label {
-        font-family: 'Kumbh Sans', sans-serif;
+        font-family: "Kumbh Sans", sans-serif;
         font-weight: bold;
         font-size: 13px;
         letter-spacing: 5px;
@@ -70,8 +70,10 @@
   #applyButton {
     position: absolute;
     bottom: -18px;
-    right: 43%;
-    background-color: #F87070;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-color: #f87070;
     border-radius: 35px;
     padding: 12px 48px;
     color: #fff;
@@ -84,5 +86,4 @@
       background-color: #920000;
     }
   }
-
 }

@@ -69,20 +69,16 @@ describe('ColorSelectorComponent', () => {
       text: `${fontOptions[0].label}`,
     });
 
-    expect(
-      spectator.queryAll('.radio-wrapper')[0].querySelector('.radio')
-    ).toHaveStyle({
-      backgroundColor: '#040403',
-    });
+
     expect(
       spectator.queryAll('.radio-wrapper')[1].querySelector('.radio')
     ).not.toHaveStyle({
-      backgroundColor: '#040403',
+      backgroundColor: '#70F3F8',
     });
     expect(
       spectator.queryAll('.radio-wrapper')[2].querySelector('.radio')
     ).not.toHaveStyle({
-      backgroundColor: '#040403',
+      backgroundColor: '#D881F8',
     });
   });
 
@@ -104,7 +100,7 @@ describe('ColorSelectorComponent', () => {
     expect(
       spectator.queryAll('.radio-wrapper')[0].querySelector('.radio')
     ).toHaveStyle({
-      backgroundColor: '#dd1155',
+      backgroundColor: '#F87070',
     });
     expect(
       spectator.queryAll('.radio-wrapper')[0].querySelector('.checkmark')
@@ -115,7 +111,7 @@ describe('ColorSelectorComponent', () => {
     expect(
       spectator.queryAll('.radio-wrapper')[1].querySelector('.radio')
     ).toHaveStyle({
-      backgroundColor: '#ffee88',
+      backgroundColor: '#70F3F8',
     });
     expect(
       spectator.queryAll('.radio-wrapper')[1].querySelector('.checkmark')
@@ -126,7 +122,7 @@ describe('ColorSelectorComponent', () => {
     expect(
       spectator.queryAll('.radio-wrapper')[2].querySelector('.radio')
     ).toHaveStyle({
-      backgroundColor: '#00cc99',
+      backgroundColor: '#D881F8',
     });
     expect(
       spectator.queryAll('.radio-wrapper')[2].querySelector('.checkmark')

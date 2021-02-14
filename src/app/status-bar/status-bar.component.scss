@@ -1,14 +1,19 @@
+@import "../../style/respond-to.scss";
 .pomodoro-status-bar {
   background-color: #161932;
-  width: 400px;
+  width: 330px;
   height: 40px;
+  @include respond-tablet($at-minimum: true) {
+    width: 500px;
+    height: 60px;
+  }
   border-radius: 26.5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 3px;
   &__item {
-    color: #D7E0FF;
+    color: #d7e0ff;
     font-weight: bold;
     font-size: 14px;
     height: 100%;
@@ -18,11 +23,8 @@
     align-items: center;
     &.pomodoro-status-bar__item--active {
       border-radius: 30px;
-      color: #1E213F;
+      color: #1e213f;
       // background-color: orange;
-
     }
   }
 }
-
-

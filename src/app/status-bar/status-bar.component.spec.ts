@@ -106,13 +106,13 @@ describe('StatusBarComponent', () => {
     settingsService.selectFont('font_setting_1');
     spectator.detectChanges();
     expect(pomodoroStatusItem()).toHaveStyle({
-      fontFamily: '"Lexend Mega", sans-serif',
+      fontFamily: '"Kumbh Sans", sans-serif',
     });
 
     settingsService.selectFont('font_setting_2');
     spectator.detectChanges();
     expect(pomodoroStatusItem()).toHaveStyle({
-      fontFamily: '"Noto Sans JP", sans-serif',
+      fontFamily: '"Roboto Slab", serif',
     });
   });
 
@@ -127,13 +127,13 @@ describe('StatusBarComponent', () => {
     settingsService.selectColor('color_setting_1');
     spectator.detectChanges();
     expect(activeItem()).toHaveStyle({
-      backgroundColor: '#dd1155',
+      backgroundColor: '#F87070',
     });
 
     settingsService.selectColor('color_setting_3');
     spectator.detectChanges();
     expect(activeItem()).toHaveStyle({
-      backgroundColor: '#00cc99',
+      backgroundColor: '#D881F8',
     });
   });
 
@@ -150,7 +150,7 @@ describe('StatusBarComponent', () => {
     settingsService.selectFont('font_setting_2');
 
     expect(spectator.component.getItemCssClass(pomodoroMode.pomodoro)).toBe(
-      'pomodoro-status-bar__item--pomodoro font_setting_2 pomodoro-status-bar__item--active color_setting_1'
+      'pomodoro-status-bar__item--pomodoro font_setting_2 pomodoro-status-bar__item--active color_setting_1--bg'
     );
     expect(spectator.component.getItemCssClass(pomodoroMode.shortBreak)).toBe(
       'pomodoro-status-bar__item--shortBreak font_setting_2'

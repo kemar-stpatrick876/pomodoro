@@ -7,6 +7,7 @@ import {
   Injector,
   Renderer2,
 } from '@angular/core';
+import { ResponsiveService } from '../responsive.service';
 import { SettingsComponent } from './settings/settings.component';
 
 @Directive({
@@ -17,7 +18,9 @@ export class SettingsLauncherDirective implements AfterViewInit {
     private el: ElementRef,
     private renderer: Renderer2,
     private overlay: Overlay,
-    private parentInjector: Injector
+    private parentInjector: Injector,
+    private responsiveService: ResponsiveService
+
   ) {}
 
   ngAfterViewInit(): void {
@@ -47,14 +50,21 @@ export class SettingsLauncherDirective implements AfterViewInit {
   }
 
   private _getOverlayConfig(): OverlayConfig {
+    let width = 350;
+    let height = 575;
+
+    if (!this.responsiveService.isMobileScreen) {
+      width = 540;
+      height = 550;
+    }
     const positionStrategy = this.overlay
       .position()
       .global()
       .centerHorizontally()
       .centerVertically();
     return {
-      width: 600,
-      height: 400,
+      width,
+      height,
       backdropClass: 'backdrop',
       panelClass: 'panel',
       hasBackdrop: true,

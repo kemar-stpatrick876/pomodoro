@@ -11,7 +11,7 @@
     <label
       class="radio"
       [for]="option?.name + 'Radio'"
-      [class]="option?.value + '--bg'"
+      [class]="option?.value + (type === radioGroupType.color ? '--bg' : '')"
     >
       <span class="checkmark" *ngIf="type === radioGroupType.color">
         <div class="checkmark_stem"></div>

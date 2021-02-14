@@ -1,14 +1,14 @@
 <div class="pomodoro-timer">
-  <svg class="progress-ring" width="400" height="400">
+  <svg class="progress-ring">
     <circle
       #progressCircle
       class="progress-ring__circle"
       [class]="getColorClass('stroke')"
       stroke-width="8"
       fill="transparent"
-      r="180"
-      cx="200"
-      cy="200"
+      [attr.r]="progressDims.r"
+      [attr.cx]="progressDims.cxY"
+      [attr.cy]="progressDims.cxY"
 
     />
     <text
@@ -16,8 +16,9 @@
       y="50%"
       text-anchor="middle"
       fill="#D7E0FF"
-      font-size="100px"
+      font-size="0px"
       dy=".3em"
+      class="progress-ring__time-text"
       [class]="fontClass"
     >
       {{(timerService.change | async)?.display}}
@@ -29,6 +30,7 @@
       font-size="30px"
       dy=".3em"
       id="toggleButton"
+      class="progress-ring__btn-text"
       [class]="getColorClass('fill') + fontClass"
       (click)="startTime()"
     >

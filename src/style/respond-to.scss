@@ -1,0 +1,28 @@
+$desktop: 1200px;
+$handheld: 768px;
+$mobile: 640px;
+// TODO: Can later refactor to support more granular responsiveness
+
+@mixin respond-mobile() {
+  @media (max-width: ($handheld - 1)) {
+    @content;
+  }
+}
+
+@mixin respond-tablet($at-minimum: false) {
+  @if $at-minimum {
+    @media (min-width: $handheld) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $handheld) and (max-width: ($desktop - 1)) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-desktop() {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}

@@ -1,5 +1,6 @@
 import { AfterViewInit, ElementRef, Renderer2 } from '@angular/core';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ResponsiveService } from '../responsive.service';
 import { IPomodoroTime } from '../settings/settings/settings.model';
 import { SettingsService } from '../settings/settings/settings.service';
 import { Pomodoro } from './Pomodoro';
@@ -19,15 +20,16 @@ export class TimerComponent implements OnInit, AfterViewInit {
     private settingsService: SettingsService,
     public timerService: TimerService,
     private renderer: Renderer2,
+    private responsiveService: ResponsiveService
   ) {}
 
   ngOnInit(): void {
-    this.settingsService.onTimeSettingsChanged.subscribe((timeSetting: IPomodoroTime) => {
-      this.timerService.init(new Pomodoro(timeSetting));
-    });
+    this.settingsService.onTimeSettingsChanged.subscribe(
+      (timeSetting: IPomodoroTime) => {
+        this.timerService.init(new Pomodoro(timeSetting));
+      }
+    );
   }
-
-
 
   ngAfterViewInit(): void {
     setTimeout(() => {
@@ -54,7 +56,6 @@ export class TimerComponent implements OnInit, AfterViewInit {
     }, 10);
   }
 
-
   public get buttonText(): string {
     let text = 'START';
 
@@ -66,12 +67,11 @@ export class TimerComponent implements OnInit, AfterViewInit {
     return text;
   }
 
-
   public getColorClass(type: 'fill' | 'stroke'): string {
     const [currentSelection = { color: '' }] = this.settingsService.selected;
     const { color } = currentSelection;
     const cls = color + (type === 'fill' ? '--fill ' : '--stroke ');
-    return cls ;
+    return cls;
   }
 
   public get fontClass(): string {
@@ -81,6 +81,23 @@ export class TimerComponent implements OnInit, AfterViewInit {
     fontClass += font;
 
     return fontClass + ' ';
+  }
+
+  public get progressDims(): {
+    r: number;
+    cxY: number;
+  } {
+    let r = 130;
+    let cxY = 150;
+    if (!this.responsiveService.isMobileScreen) {
+      r = 180;
+      cxY = 200;
+    }
+
+    return {
+      r,
+      cxY
+    };
   }
 
   public startTime(): void {

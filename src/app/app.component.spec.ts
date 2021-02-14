@@ -1,31 +1,31 @@
-import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-
+import { Spectator, createHostFactory } from '@ngneat/spectator';
+import { SettingsModule } from './settings/settings.module';
+import { TimerComponent } from './timer/timer.component';
+import { StatusBarComponent } from './status-bar/status-bar.component';
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+  let spectator: Spectator<AppComponent>;
+  const createHost = createHostFactory({
+    component: AppComponent,
+    declarations: [StatusBarComponent, TimerComponent],
+    imports: [SettingsModule]
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  it('should launch and with settings modal open', () => {
+    spectator = createHost(` <pomodoro-root></pomodoro-root>`);
+    expect(document.querySelector('pomodoro-settings')).toBeVisible();
+    expect(spectator.query('pomodoro-status-bar')).toBeVisible();
+    expect(spectator.query('pomodoro-timer')).toBeVisible();
+    expect(spectator.query('#settingsButton')).toBeVisible();
   });
 
-  it(`should have as title 'pomodoro'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('pomodoro');
+  it('should launch settings modal', () => {
+    spectator = createHost(` <pomodoro-root></pomodoro-root>`);
+    expect(document.querySelector('pomodoro-settings')).toBeVisible();
+    spectator.click(document.querySelector('pomodoro-settings .close-btn') as Element);
+    expect(document.querySelector('pomodoro-settings')).not.toBeVisible();
+    spectator.click(spectator.query('#settingsButton') as Element);
+    expect(document.querySelector('pomodoro-settings')).toBeVisible();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('pomodoro app is running!');
-  });
 });
