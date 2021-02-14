@@ -1,0 +1,38 @@
+<div class="pomodoro-settings">
+  <div class="pomodoro-settings__header">
+    <span class="title">Settings</span>
+    <button class="close-btn" (click)="closePopup(initialAppLoad)">
+      <img src="/assets/icons/assets/icon-close.svg" alt="close icon">
+    </button>
+  </div>
+  <form class="pomodoro-settings__form" [formGroup]="this.settingsForm">
+    <div
+      class="pomodoro-settings__form__control pomodoro-settings__form__control--time"
+    >
+      <label class="pomodoro-settings__form__control__label">Time (Minutes)</label>
+      <pomodoro-time-inputs formControlName="time"></pomodoro-time-inputs>
+      <p class="warn" *ngIf="timeChangingWhileTimeInProgress">Note: Timer started, changing time will restart time.</p>
+    </div>
+    <div
+      class="pomodoro-settings__form__control pomodoro-settings__form__control--font"
+    >
+      <label class="pomodoro-settings__form__control__label">Font</label>
+      <pomodoro-radio-group
+        [type]="radioGroupType.font"
+        [options]="fontOptions"
+        formControlName="font"
+      ></pomodoro-radio-group>
+    </div>
+    <div
+      class="pomodoro-settings__form__control pomodoro-settings__form__control--color"
+    >
+      <label class="pomodoro-settings__form__control__label">Color</label>
+      <pomodoro-radio-group
+        [type]="radioGroupType.color"
+        [options]="colorOptions"
+        formControlName="color"
+      ></pomodoro-radio-group>
+    </div>
+  </form>
+  <button id="applyButton" (click)="onApply()" [ngClass]="{'danger-alert': timeChangingWhileTimeInProgress}">Apply</button>
+</div>

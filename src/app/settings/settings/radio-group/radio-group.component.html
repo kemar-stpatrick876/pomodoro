@@ -1,0 +1,25 @@
+<div class="pomodoro-radio-group" [class]="'pomodoro-radio-group--' + type">
+  <label class="radio-wrapper" *ngFor="let option of options">
+    <input
+      type="radio"
+      [id]="option?.name + 'Radio'"
+      (change)="onSelectionChange(option)"
+      [value]="option?.name"
+      [name]="type"
+      [checked]="isCheckedOption(option)"
+    />
+    <label
+      class="radio"
+      [for]="option?.name + 'Radio'"
+      [class]="option?.value + '--bg'"
+    >
+      <span class="checkmark" *ngIf="type === radioGroupType.color">
+        <div class="checkmark_stem"></div>
+        <div class="checkmark_kick"></div>
+      </span>
+      <span class="display-label" *ngIf="type === radioGroupType.font">{{
+        option?.label
+      }}</span>
+    </label>
+  </label>
+</div>

@@ -1,0 +1,39 @@
+<div class="pomodoro-timer">
+  <svg class="progress-ring" width="400" height="400">
+    <circle
+      #progressCircle
+      class="progress-ring__circle"
+      [class]="getColorClass('stroke')"
+      stroke-width="8"
+      fill="transparent"
+      r="180"
+      cx="200"
+      cy="200"
+
+    />
+    <text
+      x="50%"
+      y="50%"
+      text-anchor="middle"
+      fill="#D7E0FF"
+      font-size="100px"
+      dy=".3em"
+      [class]="fontClass"
+    >
+      {{(timerService.change | async)?.display}}
+    </text>
+    <text
+      x="50%"
+      y="75%"
+      text-anchor="middle"
+      font-size="30px"
+      dy=".3em"
+      id="toggleButton"
+      [class]="getColorClass('fill') + fontClass"
+      (click)="startTime()"
+    >
+      {{buttonText}}
+    </text>
+  </svg>
+</div>
+

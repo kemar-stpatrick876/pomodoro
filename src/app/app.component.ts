@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { SettingsLauncherDirective } from './settings/settings-launcher.directive';
 
 @Component({
-  selector: 'app-root',
+  selector: 'pomodoro-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'pomodoro';
+export class AppComponent implements AfterViewInit {
+  @ViewChild(SettingsLauncherDirective)
+  settingsLauncher!: SettingsLauncherDirective;
+
+  ngAfterViewInit(): void {
+    this.settingsLauncher.launchSettingsOverlay(true);
+  }
 }

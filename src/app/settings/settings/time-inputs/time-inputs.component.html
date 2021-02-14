@@ -1,0 +1,38 @@
+<div class="pomodoro-time-inputs">
+  <div class="pomodoro-time-input">
+    <label class="pomodoro-time-input__label" for="pomodoroInput">Pomodoro</label>
+    <input
+      type="number"
+      class="pomodoro-time-input__field pomodoro-time-input__field--pomodoro"
+      name="pomodoro"
+      min="5"
+      [value]="value?.pomodoro"
+      (change)="onInputChange($event)"
+    />
+  </div>
+
+  <div class="pomodoro-time-input">
+    <label class="pomodoro-time-input__label" for="pomodoroInput">Short Break</label>
+    <input
+      type="number"
+      class="pomodoro-time-input__field pomodoro-time-input__field--short-break"
+      name="shortBreak"
+      min="1"
+      [value]="value?.shortBreak"
+      (change)="onInputChange($event)"
+    />
+  </div>
+
+  <div class="pomodoro-time-input">
+    <label class="pomodoro-time-input__label" for="pomodoroInput">Long Break</label>
+
+    <input
+      type="number"
+      class="pomodoro-time-input__field pomodoro-time-input__field--long-break"
+      name="longBreak"
+      min="1"
+      [value]="value?.longBreak"
+      (change)="onInputChange($event)"
+    />
+  </div>
+</div>

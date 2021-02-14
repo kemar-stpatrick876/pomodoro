@@ -1,0 +1,65 @@
+.pomodoro-radio-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &--color {
+    [type="radio"]:checked + .radio .checkmark {
+      opacity: 1;
+    }
+  }
+
+  &--font {
+    [type="radio"]:checked + .radio {
+      background-color: #1E213F !important;
+      color: #ffffff;
+    }
+  }
+  .radio-wrapper {
+    margin: 0 12px;
+    [type="radio"] {
+      display: none;
+    }
+
+    .radio {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #EFF1FA;
+      font-size: 15px;
+      color: #1E213F;
+      cursor: pointer;
+      transition: background-color 300ms ease-in-out;
+
+      .checkmark {
+        opacity: 0;
+        width: 22px;
+        height: 22px;
+        -ms-transform: rotate(45deg); /* IE 9 */
+        -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+        transform: rotate(45deg);
+        transition: opacity 300ms ease-in-out;
+      }
+
+      .checkmark_stem {
+        position: absolute;
+        width: 3px;
+        height: 9px;
+        background-color: #000000;
+        left: 11px;
+        top: 6px;
+      }
+
+      .checkmark_kick {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background-color: #000000;
+        left: 8px;
+        top: 12px;
+      }
+    }
+  }
+}

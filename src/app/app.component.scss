@@ -1,0 +1,30 @@
+:host {
+  height: 100%;
+}
+
+.app-container {
+  background-color: #1E213F;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  .app-title {
+    color: #D7E0FF;
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+  #settingsButton {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+      opacity: 0.8;
+    }
+    .settings-icon {
+      font-size: 42px;
+      color: #ccc;
+    }
+  }
+
+}

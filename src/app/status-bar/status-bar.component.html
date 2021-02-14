@@ -1,0 +1,20 @@
+<div class="pomodoro-status-bar">
+  <div
+    class="pomodoro-status-bar__item"
+    [class]="getItemCssClass(pomodoroMode.pomodoro)"
+  >
+    pomodoro
+  </div>
+  <div
+    class="pomodoro-status-bar__item"
+    [class]="getItemCssClass(pomodoroMode.shortBreak)"
+  >
+    short break
+  </div>
+  <div
+    class="pomodoro-status-bar__item "
+    [class]="getItemCssClass(pomodoroMode.longBreak)"
+  >
+    long break
+  </div>
+</div>

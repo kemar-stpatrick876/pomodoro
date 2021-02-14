@@ -1,0 +1,26 @@
+:host {
+  height: 400px;
+  width: 400px;
+}
+.pomodoro-timer {
+  height: 400px;
+  width: 400px;
+  background-color: #aa1155;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(315deg, #2e325a 0%, #0e112a 100%);
+  box-shadow: -50px -50px 100px #272c5a, 50px 50px 100px #121530;
+  .progress-ring {
+    &__circle {
+      transition: 0.35s stroke-dashoffset;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    #toggleButton {
+      cursor: pointer;
+    }
+  }
+}

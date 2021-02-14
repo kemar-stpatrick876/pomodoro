@@ -1,0 +1,28 @@
+.pomodoro-time-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  .pomodoro-time-input {
+    &__label {
+      color: #161932;
+      font-size: 12px;
+      font-family: 'Kumbh Sans', sans-serif;
+    }
+    &__field {
+      height: 30px;
+      border-radius: 7px;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      width: 150px;
+      background-color: #EFF1FA;
+      color: #161932;
+      font-size: 14px;
+      font-family: 'Kumbh Sans', sans-serif;
+      padding: 0 12px;
+      outline: none;
+    }
+  }
+
+}

@@ -1,0 +1,28 @@
+.pomodoro-status-bar {
+  background-color: #161932;
+  width: 400px;
+  height: 40px;
+  border-radius: 26.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px;
+  &__item {
+    color: #D7E0FF;
+    font-weight: bold;
+    font-size: 14px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.pomodoro-status-bar__item--active {
+      border-radius: 30px;
+      color: #1E213F;
+      // background-color: orange;
+
+    }
+  }
+}
+
+
