@@ -54,7 +54,7 @@ export class TimerService {
 
   start(): void {
     let secondCounter = 0;
-    let percentageElapsed = 100;
+    let percentageRemaining = 100;
     let timeLimit = this.durationInSeconds;
     if (this.state === timerState.paused) {
       timeLimit = this.durationInSeconds - this.timeElapsed;
@@ -76,7 +76,7 @@ export class TimerService {
         '0' + seconds.toString()
       ).slice(-2)}`;
       if (secondCounter % 60 === 0) {
-         percentageElapsed = (timeRemaining / this.durationInSeconds) * 100;
+         percentageRemaining = (timeRemaining / this.durationInSeconds) * 100;
 
       }
 
@@ -84,9 +84,9 @@ export class TimerService {
         display,
         minutes,
         seconds,
-        percentageRemaining: percentageElapsed,
+        percentageRemaining,
       });
-      if (percentageElapsed === 0) {
+      if (percentageRemaining === 0) {
         this.pomodoro.nextPhase();
         this.durationInSeconds = this.pomodoro.getCurrentPhase().duration * 60;
         this.subscription.unsubscribe();
