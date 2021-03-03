@@ -27,6 +27,7 @@ export class TimerService {
   public change: Subject<ITimerChange> = new Subject<ITimerChange>();
   public state!: timerState;
   public pomodoro!: Pomodoro;
+  percentageRemaining: number;
 
   constructor() {
     this.timeElapsed = 0;
@@ -54,7 +55,9 @@ export class TimerService {
 
   start(): void {
     let secondCounter = 0;
-    let percentageRemaining = 100;
+    if (!this.percentageRemaining) {
+      this.percentageRemaining = 100;
+    }
     let timeLimit = this.durationInSeconds;
     if (this.state === timerState.paused) {
       timeLimit = this.durationInSeconds - this.timeElapsed;
@@ -65,6 +68,9 @@ export class TimerService {
       takeWhile(() => secondCounter < timeLimit),
       tap(() => secondCounter++)
     );
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
 
     this.subscription = this.timer.subscribe(() => {
       this.state = timerState.running;
@@ -76,17 +82,16 @@ export class TimerService {
         '0' + seconds.toString()
       ).slice(-2)}`;
       if (secondCounter % 60 === 0) {
-         percentageRemaining = (timeRemaining / this.durationInSeconds) * 100;
-
+        this.percentageRemaining  = (timeRemaining / this.durationInSeconds) * 100;
       }
 
       this.change.next({
         display,
         minutes,
         seconds,
-        percentageRemaining,
+        percentageRemaining: this.percentageRemaining
       });
-      if (percentageRemaining === 0) {
+      if (this.percentageRemaining  === 0) {
         this.pomodoro.nextPhase();
         this.durationInSeconds = this.pomodoro.getCurrentPhase().duration * 60;
         this.subscription.unsubscribe();
@@ -101,6 +106,7 @@ export class TimerService {
       this.subscription.unsubscribe();
       this.timer = null;
       this.state = timerState.stopped;
+      this.percentageRemaining = undefined;
     }
   }
 
